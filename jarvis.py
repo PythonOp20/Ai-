@@ -5,6 +5,7 @@ import webbrowser
 import os
 import speech_recognition as sr
 import random
+from guess_num_game import game
 
 music_no = random.randint(0, 17)
 engine = pyttsx3.init('sapi5')
@@ -26,7 +27,17 @@ def wishMe():
     else:
         speak("Good Evening!")
 
-    speak("I am Jarvis, current status updated. How can I help you.")
+    speak("I am Jarvis. How can I help you.")
+
+
+def intro_game():
+    speak("Let me introduce with the rules of the game.")
+    speak("You have to guess a number in 10 chances.")
+    speak("If you succesfully guesed the number you will win. else, game will be over and you lose.")
+
+def the_game(chances):
+    speak("Guess the number between 0 and 100")
+    game(chances) 
 
 def takeCommand():
     # It takes microphone input from the user and returns string output.
@@ -82,6 +93,24 @@ if __name__ == "__main__":
         elif 'open code' in query:
             codePath = "D:\\Microsoft VS Code\\Code.exe"
             os.startfile(codePath)
+
+        elif 'play a game' in query:
+            speak("Sir, would you like to play a number guessing game ??")
+            
+            query = takeCommand().lower()
+            if 'yes' in query:
+                speak("ok")
+                intro_game()
+                the_game(0)
+                
+            elif 'no' in query:
+                speak("Ok sir, we will play it later")
+
+        elif 'continue the game' in query:
+            the_game(0)
+
+        elif 'thank you' in query:
+            speak("Its my duty sir.")
 
         elif 'quit' in query:
             speak("Thank you for using me. Hope you have a good day.")
