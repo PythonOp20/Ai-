@@ -33,7 +33,7 @@ def wishMe():
 def intro_game():
     speak("Let me introduce with the rules of the game.")
     speak("You have to guess a number in 10 chances.")
-    speak("If you succesfully guesed the number you will win. else, game will be over and you lose.")
+    speak("If you succesfully guessed the number you will win. else, game will be over and you lose.")
 
 def the_game(chances):
     speak("Guess the number between 0 and 100")
@@ -111,6 +111,10 @@ if __name__ == "__main__":
 
         elif 'thank you' in query:
             speak("Its my duty sir.")
+
+        elif 'goodnight' in query:
+            speak("Good Night Sir. Have sweet dreems.")
+            exit()
 
         elif 'quit' in query:
             speak("Thank you for using me. Hope you have a good day.")
